@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+    ReWriteEngine on
+    RewriteRule    ^Estudiante/?$    main_student.php [NC,L]
+    RewriteRule    ^Estudiante/?$    see_profile_student.php [NC,L]
+    RewriteRule    ^Estudiante/?$    lessons_student.php [NC,L]
+    ReWriteRule ^$ public/ [L]
+    ReWriteRule (.*) public/$1 [L]
+</IfModule>

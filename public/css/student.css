@@ -1,0 +1,88 @@
+/** con materialize */
+/** menu */
+nav, .page-footer{
+    background: #4CAF50;
+}
+
+nav .brand-logo, .page-footer h2{
+font-weight: bold;
+}
+
+.sidenav {
+    width: 250px;
+}
+
+/** main-student */
+
+
+.profile-picture{
+    width: 30%;
+}
+
+/** fin main-student*/
+
+/** --------------- EDIT PROFILE */
+
+.send_edit_profile .button{
+    background-color: #0070c9;
+    color:white;
+}
+
+.div-table-personal-info input{
+    height: 3em;
+}
+
+/** --------- para select's ------------*/
+
+.input-field.col label{
+    left:0;
+    font-size: 1.2rem;
+}
+
+
+
+/** ----------- VER PERFIL  -------------------------*/
+.div-table-personal-info{
+    overflow-x:auto;
+}
+
+.div-table-personal-info table tr td{
+    height: 45px;
+}
+.div-table-personal-info table tr td:nth-child(2n){
+    padding-left: 4em;
+}
+
+.edit_profile .button{
+    background: rgb(224, 103, 4);
+    color: white
+}
+
+.update-password-link{
+    color:#0070c9;
+    font-size: 20px;
+}
+
+.edit_profile .button:hover{
+    background: #4CAF50;
+}
+
+/** ------------------- CLASES ------------------------------ */ 
+
+.container .row .card .card-image .card-title{
+    background: rgba(0,0,0,0.6);
+    width: 100%;
+    padding: 10px;
+    color: white;
+}
+
+.container .row .img-card{
+    height: 32%;
+}
+
+
+.page-footer .container .row .col .fa{
+    font-size: 3em;
+}
+
+

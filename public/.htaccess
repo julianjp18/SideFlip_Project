@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+Options -Multiviews
+# Activar RewriteEngine
+RewriteEngine On
+RewriteRule    ^Estudiante/?$    main_student.php [NC,L]
+RewriteRule    ^Estudiante/?$    see_profile_student.php [NC,L]
+RewriteRule    ^Estudiante/?$    lessons_student.php [NC,L]
+RewriteBase /sideflip/public
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{SCRIPT_FILENAME} !-d
+# RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule>

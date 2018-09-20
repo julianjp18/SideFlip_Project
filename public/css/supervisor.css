@@ -1,0 +1,14 @@
+nav, .page-footer{
+    background: #4CAF50;
+}
+nav .brand-logo, .page-footer h2{
+font-weight: bold;
+}
+
+.sidenav {
+    width: 250px;
+}
+
+.page-footer .container .row .col .fa{
+    font-size: 3em;
+}

@@ -1,0 +1,85 @@
+h2{
+    font-size:35px;
+}
+h3{
+    font-size: 1.92rem;;
+}
+/** menu */
+nav, .page-footer{
+    background: #4CAF50;
+}
+
+nav .brand-logo, .page-footer h2{
+    font-weight: bold;
+}
+
+.sidenav {
+    width: 250px;
+}
+
+@media screen and (max-width: 400px){
+    .square-form-login input {
+        height: 6%;
+    }
+}
+
+.container .row .col .square-login{
+    border: 1px solid black;
+    border-bottom-left-radius: 2%;
+    border-bottom-right-radius: 2%;
+}
+
+
+/** Imagén del cuadro de login */
+.square-login .square-title-login{
+    width: 100%;
+    background-image: url(http://localhost/sideflip/img/sd-6.jpg);
+    background-size: cover;
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    position: relative !important;
+    margin-bottom: -21px;
+}
+    
+.fondo-1{
+    width:100%;
+    background: rgba(0,0,0,.5);
+    opacity:.9;
+}
+
+.square-title-login h1{
+    color:white;
+    padding: 1.5em 1em;
+    margin-top:0;
+}
+
+/** Fin imagén del cuadro de login */
+
+/** Cuadro formulario login */
+
+.background{
+    background: rgba(0,0,0,.5);
+}
+
+.square-form-login .row .input-field{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+
+.square-form-login .row input{
+    width: 90%;
+}
+
+    /** Fin cuadro formulario login */
+
+@media (max-width: 610px){
+    .square-title-login h1{
+        padding: 0.8em 0em;
+        font-size: 42px;
+    }
+
+    .diseno{
+        display: none;
+    }
+}
