@@ -23,7 +23,7 @@
         
     </script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-    <script src="<?= RUTA_URL; ?>/js/main.js"></script>
+    <script src="<?= RUTA_URL; ?>/js/main-project.js"></script>
 </head>
 <body>
     <div class="se-pre-con"></div>

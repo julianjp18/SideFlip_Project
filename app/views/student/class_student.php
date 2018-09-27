@@ -24,9 +24,9 @@
                     <div class="input-field col s12">
                         <select>
                             <option value="" disabled selected>Selecciona una opción</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                            <option value="1">Bachata</option>
+                            <option value="2">Break Dance</option>
+                            <option value="3">Hip Hop</option>
                         </select>
                         <label>Selecciona una clase</label>
                     </div>

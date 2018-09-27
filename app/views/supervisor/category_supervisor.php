@@ -6,7 +6,28 @@
                 <h2>Gestión Categorias</h2>
                 <hr>
                 <div class="right-align">
-                    <a class="btn light-green" href="">Agregar categoria</a>
+                    <a class="btn light-green modal-trigger" href="#modal1">Agregar categoria</a>
+                </div>
+                <!-- Modal Structure -->
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <h4>Agregar Categoria</h4>
+                        <form action="" method="POST">
+                            <div class="input-field col s12">
+                                <input name="txt_name" id="txt_name" type="text" class="validate" required>
+                                <label for="txt_name">Nombre Categoria</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea name="textarea_msj" id="textarea_msj" class="materialize-textarea" required></textarea>
+                                <label for="textarea_msj">Descripción</label>
+                            </div>
+                            <br>
+                            <button class="btn" onclick="M.toast({html: 'Mensaje Enviado correctamente'})" name="btn_enviar" id="btn_enviar" type="submit">Enviar</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -16,52 +37,50 @@
                 <table id="example" class="bordered">
                     <thead>
                         <tr>
-                            <th>1</th>
-                            <th>2</th>
-                            <th>3</th>
-                            <th>4</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
                             <th>Acción</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr>
-                            <td>1</td><td>2</td><td>3</td><td>4</td>
+                            <td>{{name_category}}</td><td>{{description_category}}</td>
                             <td>
                                 <a class="btn red accent-3 btn-delete" href="">Eliminar</a>
                                 <a class="btn amber darken-3 btn-update" href="">Modificar</a>
                             </td>
                         </tr>
                         <tr>
-                            <td>1</td><td>2</td><td>3</td><td>4</td>
+                        <td>{{name_category}}</td><td>{{description_category}}</td>
                             <td>
                                 <a class="btn red accent-3 btn-delete" href="">Eliminar</a>
                                 <a class="btn amber darken-3 btn-update" href="">Modificar</a>
                             </td>
                         </tr>
                         <tr>
-                            <td>1</td><td>2</td><td>3</td><td>4</td>
+                            <td>{{name_category}}</td><td>{{description_category}}</td>
                             <td>
                                 <a class="btn red accent-3 btn-delete" href="">Eliminar</a>
                                 <a class="btn amber darken-3 btn-update" href="">Modificar</a>
                             </td>
                         </tr>
                         <tr>
-                            <td>1</td><td>2</td><td>3</td><td>4</td>
+                            <td>{{name_category}}</td><td>{{description_category}}</td>
                             <td>
                                 <a class="btn red accent-3 btn-delete" href="">Eliminar</a>
                                 <a class="btn amber darken-3 btn-update" href="">Modificar</a>
                             </td>
                         </tr>
                         <tr>
-                            <td>1</td><td>2</td><td>3</td><td>4</td>
+                            <td>{{name_category}}</td><td>{{description_category}}</td>
                             <td>
                                 <a class="btn red accent-3 btn-delete" href="">Eliminar</a>
                                 <a class="btn amber darken-3 btn-update" href="">Modificar</a>
                             </td>
                         </tr>
                         <tr>
-                            <td>1</td><td>2</td><td>3</td><td>4</td>
+                            <td>{{name_category}}</td><td>{{description_category}}</td>
                             <td>
                                 <a class="btn red accent-3 btn-delete" href="">Eliminar</a>
                                 <a class="btn amber darken-3 btn-update" href="">Modificar</a>

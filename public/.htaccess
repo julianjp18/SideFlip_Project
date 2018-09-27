@@ -5,7 +5,7 @@ RewriteEngine On
 RewriteRule    ^Estudiante/?$    main_student.php [NC,L]
 RewriteRule    ^Estudiante/?$    see_profile_student.php [NC,L]
 RewriteRule    ^Estudiante/?$    lessons_student.php [NC,L]
-RewriteBase /sideflip/public
+RewriteBase /SideFlip_Project/public
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 # RewriteCond %{SCRIPT_FILENAME} !-d

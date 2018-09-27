@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="<?= RUTA_URL; ?>/css/style-index.css">
    
     <!-- Compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
     <script src="<?= RUTA_URL; ?>/js/main.js"></script>
 </head>
+
 <body>
     <div class="se-pre-con"></div>
     <div class="background-1" id="home">
@@ -45,7 +46,7 @@
                     <li class=""><a href="#what-is">¿Qué es SideFlip?</a></li>
                     <li class=""><a href="#services">Servicios</a></li>
                     <li class=""><a href="#prices">Precios</a></li>
-                    <li class=""><a href="#clients">Clientes</a></li>
+                    <li class=""><a href="#clients" data-ancla="clients">Clientes</a></li>
                     <li class=""><a href="#contact-us">Contacto</a></li>
                     <li class=""><a href="<?= RUTA_URL; ?>/pages/ingresar">Ingresar</a></li>
                 </ul>

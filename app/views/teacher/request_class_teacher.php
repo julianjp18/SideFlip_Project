@@ -1,5 +1,5 @@
 <?php require RUTA_APP.'/views/inc/header.inc'; ?>
-    <?php require RUTA_APP.'/views/inc/menu_student.inc'; ?>
+    <?php require RUTA_APP.'/views/inc/menu_teacher.inc'; ?>
     <div class="container">
         <div class="row">
             <div class="col s12">
@@ -21,7 +21,7 @@
                 </form>
                 <br>
                 <br>
-                <a class="btn blue" href="<?= RUTA_URL ?>/student/lessons">volver</a>
+                <a class="btn blue" href="<?= RUTA_URL ?>/teacher/lessons">volver</a>
             </div>
         </div>
         <br>

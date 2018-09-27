@@ -129,7 +129,7 @@ font-weight: bold;
 /** services */
         .background-3{
             width: 100%;
-            background-image: url(http://localhost/sideflip/img/sd-2.jpg);
+            background-image: url(http://localhost/SideFlip_Project/img/sd-2.jpg);
             background-size: cover;
             background-position: 50% 0;
             background-repeat: no-repeat;
@@ -189,11 +189,11 @@ font-weight: bold;
         }
 
         .free{
-            background-image: url(http://localhost/sideflip/img/sd-3.jpg);
+            background-image: url(http://localhost/SideFlip_Project/img/sd-3.jpg);
         }
 
         .premium{
-            background-image: url(http://localhost/sideflip/img/sd-4.jpg);
+            background-image: url(http://localhost/SideFlip_Project/img/sd-4.jpg);
         }
         .free,.premium{
             width: 100%;
@@ -263,7 +263,7 @@ font-weight: bold;
 /** contact-us */
         .background-4{
             width: 100%;
-            background-image: url(http://localhost/sideflip/img/sd-5.jpg);
+            background-image: url(http://localhost/SideFlip_Project/img/sd-5.jpg);
             background-size: cover;
             background-position: 50% 0;
             background-repeat: no-repeat;

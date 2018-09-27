@@ -9,8 +9,8 @@
     // ruta de la aplicación
     define('RUTA_APP',dirname(dirname(__FILE__)));
 
-    // ruta url http://localhost/sideflip
-    define('RUTA_URL','http://localhost/sideflip');
+    // ruta url http://localhost/SideFlip_Project
+    define('RUTA_URL','http://localhost/SideFlip_Project');
 
     // nombre del sitio
     define('SITE_NAME','SideFlip');

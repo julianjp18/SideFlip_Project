@@ -12,12 +12,12 @@
                         <p>12/09/2018 03:30 PM</p>
                     </div>
                     <div class="card-action">
-                    <a class="waves-effect waves-light modal-trigger" href="#modal1">Contactar docente</a>
+                    <a class="waves-effect waves-light modal-trigger" href="#modal1">Mensaje a Estudiantes</a>
                     </div>
                     <!-- Modal Structure -->
                     <div id="modal1" class="modal">
                         <div class="modal-content">
-                            <h4>Enviar mensaje a Docente</h4>
+                            <h4>Enviar mensaje a Estudiantes</h4>
                             <form action="" method="POST">
                                 <div class="input-field col s12">
                                     <input name="txt_asunto" id="txt_asunto" type="text" class="validate" required>
@@ -49,7 +49,7 @@
                         <p>12/09/2018 03:30 PM</p>
                     </div>
                     <div class="card-action">
-                    <a href="#">Contactar docente</a>
+                        <a href="#">Mensaje a Estudiantes</a>
                     </div>
                 </div>
         </div>
@@ -65,7 +65,7 @@
                         <p>12/09/2018 03:30 PM</p>
                     </div>
                     <div class="card-action">
-                    <a href="#">Contactar docente</a>
+                        <a href="#">Mensaje a Estudiantes</a>
                     </div>
                 </div>
         </div>
