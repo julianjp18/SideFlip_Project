@@ -7,7 +7,7 @@
                     <li><a href="<?= RUTA_URL ?>/student/start">Inicio</a></li>
                     <li><a href="<?= RUTA_URL ?>/student/see_profile">Ver Perfil</a></li>
                     <li><a href="<?= RUTA_URL ?>/student/lessons">Clases</a></li>
-                    <li><a href="<?= RUTA_URL ?>/">Cerrar sesión</a></li>
+                    <li><a href="<?= RUTA_URL ?>/pages/logout">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -16,5 +16,5 @@
         <li><a href="<?= RUTA_URL ?>/student/start">Inicio</a></li>
         <li><a href="<?= RUTA_URL ?>/student/see_profile">Ver Perfil</a></li>
         <li><a href="<?= RUTA_URL ?>/student/lessons">Clases</a></li>
-        <li><a href="<?= RUTA_URL ?>/">Cerrar sesión</a></li>
+        <li><a href="<?= RUTA_URL ?>/pages/logout">Cerrar sesión</a></li>
     </ul>

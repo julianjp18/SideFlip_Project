@@ -10,7 +10,7 @@
                 <a class="btn light-green" href="<?= RUTA_URL ?>/teacher/see_profile">Ver perfil</a>
             </div>
             <div class="col s6">
-                <h3>Hola, {{nom_teacher}}</h3>
+                <h3>Hola, <b><?= $_SESSION['name']?></b></h3>
                 <hr>
                 <p>Te encuentras en <b>SideFlip</b>, donde podrás visualizar y solicitar tu horario como 
                 más te guste</p>

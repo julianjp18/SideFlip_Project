@@ -5,7 +5,7 @@ class Teacher extends Controller{
          * Constructor, se instancian las clases de los modelos a utilizar
          */
         public function __construct(){
-            $this->loginModelo = $this->model('Login');
+            $this->loginModel = $this->model('Login');
             $this->personModel = $this->model('Person');
             define('TEMPLATE','Docente');
         }
@@ -18,11 +18,20 @@ class Teacher extends Controller{
         }
 
         public function start(){
-            $this->view('/teacher/main_teacher');
+            session_start();
+            $this->view('/teacher/main_student');
         }
     
         public function see_profile(){
-            $this->view('/teacher/see_profile_teacher');
+            session_start();
+            $result = $this->personModel->getPersonById($_SESSION['id']);
+            $this->view('/teacher/see_profile_teacher',$result);
+        }
+
+        public function edit_profile(){
+            session_start();
+            $result = $this->personModel->getPersonById($_SESSION['id']);
+            $this->view('/teacher/update_profile_teacher',$result);
         }
 
         public function history_lessons(){
@@ -31,10 +40,6 @@ class Teacher extends Controller{
 
         public function lessons(){
             $this->view('/teacher/class_teacher');
-        }
-
-        public function edit_profile(){
-            $this->view('/teacher/update_profile_teacher');
         }
 
         public function update_password(){

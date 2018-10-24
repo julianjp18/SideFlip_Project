@@ -1,40 +1,51 @@
-<?php require RUTA_APP.'\views\inc\header-supervisor.inc'; ?>
-    <?php require RUTA_APP.'\views\inc\menu-supervisor.inc'; ?>
+<?php 
+if(!isset($_SESSION['id']) || !isset($_SESSION['supervisor']) || $_SESSION['supervisor'] != 1){
+    session_destroy();
+    redireccionar('/Pages/ingresar');
+}
+require RUTA_APP.'\views\inc\header-supervisor.inc';
+require RUTA_APP.'\views\inc\menu-supervisor.inc'; ?>
     <div class="container">
         <div class="row">
             <div class="col s12">
                 <h2>Gestión Ritmos</h2>
                 <hr>
                 <div class="right-align">
-                    <a class="btn light-green modal-trigger" href="#modal1">Agregar ritmo</a>
+                    <a class="btn light-green modal-trigger" href="#modal01">Agregar ritmo</a>
                 </div>
                 <!-- Modal Structure -->
-                <div id="modal1" class="modal">
+                <div id="modal01" class="modal">
                     <div class="modal-content">
                         <h4>Agregar Ritmo</h4>
-                        <form action="" method="POST">
+                        <form action="<?= RUTA_URL ?>/supervisor/add_rhythm" method="POST">
                             <div class="input-field col s12">
                                 <input name="txt_name" id="txt_name" type="text" class="validate" required>
                                 <label for="txt_name">Nombre Ritmo</label>
                             </div>
                             <div class="input-field col s12">
-                                <textarea name="textarea_msj" id="textarea_msj" class="materialize-textarea" required></textarea>
-                                <label for="textarea_msj">Descripción</label>
+                                <textarea name="txt_description" id="txt_description" class="materialize-textarea" required></textarea>
+                                <label for="txt_description">Descripción</label>
                             </div>
                             <br>
-                            <button class="btn" onclick="M.toast({html: 'Mensaje Enviado correctamente'})" name="btn_enviar" id="btn_enviar" type="submit">Enviar</button>
+                            <button class="btn" name="btn_enviar" id="btn_enviar" type="submit">Enviar</button>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                        <a href="#" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
+<?php
+if(!empty($_SESSION['message'])){
+    echo $_SESSION['message'];
+    $_SESSION['message']='';
+}
+?>
             <div class="col s12">
             <div class="card" style="margin: 20px auto; padding:20px; max-width: 800px">
-                <table id="example" class="bordered">
+                <table id="example" class="bordered responsive-table">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -44,48 +55,50 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>{{name_rythm}}</td><td>{{description_rythm}}</td>
-                            <td>
-                                <a class="btn red accent-3 btn-delete" href="">Eliminar</a>
-                                <a class="btn amber darken-3 btn-update" href="">Modificar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                        <td>{{name_rythm}}</td><td>{{description_rythm}}</td>
-                            <td>
-                                <a class="btn red accent-3 btn-delete" href="">Eliminar</a>
-                                <a class="btn amber darken-3 btn-update" href="">Modificar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                        <td>{{name_rythm}}</td><td>{{description_rythm}}</td>
-                            <td>
-                                <a class="btn red accent-3 btn-delete" href="">Eliminar</a>
-                                <a class="btn amber darken-3 btn-update" href="">Modificar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                        <td>{{name_rythm}}</td><td>{{description_rythm}}</td>
-                            <td>
-                                <a class="btn red accent-3 btn-delete" href="">Eliminar</a>
-                                <a class="btn amber darken-3 btn-update" href="">Modificar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                        <td>{{name_rythm}}</td><td>{{description_rythm}}</td>
-                            <td>
-                                <a class="btn red accent-3 btn-delete" href="">Eliminar</a>
-                                <a class="btn amber darken-3 btn-update" href="">Modificar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                        <td>{{name_rythm}}</td><td>{{description_rythm}}</td>
-                            <td>
-                                <a class="btn red accent-3 btn-delete" href="">Eliminar</a>
-                                <a class="btn amber darken-3 btn-update" href="">Modificar</a>
-                            </td>
-                        </tr>
+                    <?php 
+                   
+                   if (is_array($data) || is_object($data)){
+                       foreach ($data as $key) {
+                   ?>
+                           <tr>
+                               <td><?= $key->name_rhythm ?></td><td><?= $key->description_rhythm ?></td>
+                               <td>
+                                   <a class="btn red accent-3 btn-delete" href="<?= RUTA_URL ?>/supervisor/delete_rhythm/id/<?= $key->id_rhythm ?>"> <i class="material-icons">delete_forever</i></a>
+                                   <a class="btn amber darken-3 btn-update modal-trigger" href="#modal_update<?= $key->id_rhythm ?>"><i class="material-icons">mode_edit</i></a>
+                               </td>
+                           </tr>
+                           <!-- Modal Structure -->
+                           <div id="modal_update<?= $key->id_rhythm ?>" class="modal">
+                               <div class="modal-content">
+                                   <h4>Modificar Ritmo <b><?= $key->name_rhythm ?></b></h4>
+                                   <form action="<?= RUTA_URL ?>/supervisor/update_rhythm/id/<?= $key->id_rhythm ?>" method="POST">
+                                       <div class="input-field col s12">
+                                           <input name="txt_name" id="txt_name" type="text" class="validate" value="<?= $key->name_rhythm ?>" required>
+                                           <label for="txt_name">Nombre Ritmo</label>
+                                       </div>
+                                       <div class="input-field col s12">
+                                           <textarea name="txt_description" id="txt_description" class="materialize-textarea" required><?= $key->description_rhythm ?></textarea>
+                                           <label for="txt_description">Descripción</label>
+                                       </div>
+                                       <br>
+                                       <button class="btn" name="btn_enviar" id="btn_enviar" type="submit">Enviar</button>
+                                   </form>
+                               </div>
+                               <div class="modal-footer">
+                                   <a href="#" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                               </div>
+                           </div>
+                   <?php
+                       }
+                   }else{
+                   ?>
+                       <tr>
+                           <td colspan="3">No existen ritmos por el momento</td>
+                       </tr>
+                       <tr><td></td></tr>
+                   <?php
+                   }
+                   ?>
                     </tbody>
                 </table>
             </div>

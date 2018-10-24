@@ -1,5 +1,10 @@
-<?php require RUTA_APP.'/views/inc/header.inc'; ?>
-    <?php require RUTA_APP.'/views/inc/menu-supervisor.inc'; ?>
+<?php 
+if(!isset($_SESSION['id']) || !isset($_SESSION['supervisor']) || $_SESSION['supervisor'] != 1){
+    session_destroy();
+    redireccionar('/Pages/ingresar');
+}
+require RUTA_APP.'\views\inc\header-supervisor.inc';
+require RUTA_APP.'\views\inc\menu-supervisor.inc'; ?>
     <div class="container">
         <?php require RUTA_APP.'/views/update_password.php'; ?>
     </div>

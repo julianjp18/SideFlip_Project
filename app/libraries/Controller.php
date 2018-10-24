@@ -15,7 +15,7 @@
         }
         
         //Cargar vista
-        public function view($view,$datos = []){
+        public function view($view,$data = []){
             // Validar si el archio existe
             if(file_exists('../app/views/'. $view.'.php')){
                 require_once '../app/views/'. $view.'.php';

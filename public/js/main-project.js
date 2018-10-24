@@ -9,5 +9,6 @@ $(document).ready(function(){
     $('.modal').modal();
     $('.tabs').tabs();
     $('select').formSelect();
-    
+    $('select').isMultiple();
+    ;
 }); 

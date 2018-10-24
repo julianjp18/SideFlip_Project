@@ -9,9 +9,9 @@
                     <li><a href="<?= RUTA_URL ?>/supervisor/lessons">Clases</a></li>
                     <li><a href="<?= RUTA_URL ?>/supervisor/categories">Categoria</a></li>
                     <li><a href="<?= RUTA_URL ?>/supervisor/rhythms">Ritmo</a></li>
-                    <li><a href="<?= RUTA_URL ?>/supervisor/students">Estudiante</a></li>
-                    <li><a href="<?= RUTA_URL ?>/supervisor/teachers">Docente</a></li>
-                    <li><a href="<?= RUTA_URL ?>/">Cerrar sesión</a></li>
+                    <li><a href="<?= RUTA_URL ?>/supervisor/students">Estudiantes</a></li>
+                    <li><a href="<?= RUTA_URL ?>/supervisor/teachers">Docentes</a></li>
+                    <li><a href="<?= RUTA_URL ?>/pages/logout">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -22,7 +22,7 @@
         <li><a href="<?= RUTA_URL ?>/supervisor/lessons">Clases</a></li>
         <li><a href="<?= RUTA_URL ?>/supervisor/categories">Categoria</a></li>
         <li><a href="<?= RUTA_URL ?>/supervisor/rhythms">Ritmo</a></li>
-        <li><a href="<?= RUTA_URL ?>/supervisor/students">Estudiante</a></li>
-        <li><a href="<?= RUTA_URL ?>/supervisor/teachers">Docente</a></li>
-        <li><a href="<?= RUTA_URL ?>/">Cerrar sesión</a></li>
+        <li><a href="<?= RUTA_URL ?>/supervisor/students">Estudiantes</a></li>
+        <li><a href="<?= RUTA_URL ?>/supervisor/teachers">Docentes</a></li>
+        <li><a href="<?= RUTA_URL ?>/pages/logout">Cerrar sesión</a></li>
     </ul>

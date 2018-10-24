@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,14 +14,28 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="<?= RUTA_URL; ?>/css/style-login.css">
+    <script src="<?= RUTA_URL; ?>/js/loader.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
     <script src="<?= RUTA_URL; ?>/js/main.js"></script>
 </head>
 <body>
-    <div class="se-pre-con"></div>
+    <div class="preloader-background">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <nav>
         <div class="nav-wrapper">
             <div class="container">
@@ -45,7 +62,15 @@
     </ul>
     <div class="container">
         <div class="row">
-            <div class="col s2">         
+            <div class="col s2">    
+<?php 
+    if(!empty($_SESSION['message'])){
+?>
+                <div class="card-panel orange lighten-2"><?= $_SESSION['message'] ?></div>
+<?php
+        $_SESSION['message'] = "";
+    }
+?>     
             </div>
             <div class="col s8">
                 <div class="square-login">
@@ -54,7 +79,7 @@
                             <h1 class="center-align">Iniciar Sesión</h1>
                         </div>
                     </div>
-                    <form class="square-form-login" action="">
+                    <form class="square-form-login" method="POST" action="<?= RUTA_URL; ?>/Pages/autentication">
                         <div class="row">
                             <div class="input-field col s12">
                                 <input name="txt_email" id="txt_email" type="text" class="validate" required>
@@ -76,16 +101,6 @@
                 </div>
             </div>
             <div class="col s2">
-                  <div class="diseno">
-                    <p>Para ver diseños</p>
-                    <a href="<?= RUTA_URL; ?>/pages/student" class="btn">Estudiante</a>
-                    <br>
-                    <br>
-                    <a href="<?= RUTA_URL; ?>/pages/teacher" class="btn">Profesor</a>
-                    <br>
-                    <br>
-                    <a href="<?= RUTA_URL; ?>/pages/supervisor" class="btn">Asesor</a>
-                  </div>
             </div>
         </div>        
     </div>

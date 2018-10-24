@@ -1,56 +1,52 @@
-<?php require RUTA_APP.'\views\inc\header-supervisor.inc'; ?>
-    <?php require RUTA_APP.'\views\inc\menu-supervisor.inc'; ?>
+<?php 
+if(!isset($_SESSION['id']) || !isset($_SESSION['supervisor']) || $_SESSION['supervisor'] != 1){
+    session_destroy();
+    redireccionar('/Pages/ingresar');
+}
+require RUTA_APP.'\views\inc\header-supervisor.inc';
+require RUTA_APP.'\views\inc\menu-supervisor.inc'; ?>
     <div class="container">
         <div class="col s12"> 
-            <h2>Hola, Asesor {{nombre_asesor}}</h2>
+            <h2>Hola, Asesor <b><?= $_SESSION['name']?></b></h2>
             <div class="divider"></div>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque deserunt cupiditate impedit libero iusto eligendi at sed, eius numquam ipsum beatae dignissimos laudantium quibusdam quas enim esse a nobis fuga?</p>
+            <p>Acá encontrarás todo lo relacionado a la gestión de tu academia</p>
             <br>
             <h3><i>Proximas sesiones</i></h3>
             <div class="divider"></div>
             <div class="row">
-                <div class="col s12 m4">
+                <?php foreach ($data as $key ) {
+                    $day="";
+                    if($key->day_week=="Lunes"){
+                        $day="Monday";
+                    } else if($key->day_week=="Martes"){
+                        $day="Tuesday";
+                    } else if($key->day_week=="Miercoles"){
+                        $day="Wednesday";
+                    } else if($key->day_week=="Jueves"){
+                        $day="Thursday";
+                    } else if($key->day_week=="Viernes"){
+                        $day="Friday";
+                    } else{
+                        $day="Saturday";
+                    }
+                ?>
+                    <div class="col s12 m4">
                         <div class="card horevable">
                             <div class="card-image">
-                            <img class="to-center img-card" src="<?= RUTA_URL?>/img/class.jpg">
-                            <span class="card-title">Clase Hip - Hop</span>
+                            <img class="to-center img-card" src="<?= RUTA_URL?>/img/classes/<?= rand (1,5)?>.jpg">
+                            <span class="card-title">Clase <?= $key->name_class?></span>
                             </div>
                             <div class="card-content">
-                                <p>Nivel Intermedio - Juvenil</p>
-                                <p>Salón 210</p>
-                                <p>12/09/2018 03:30 PM</p>
+                                <p><b>Categoria: </b><?= $key->name_category?></p>
+                                <p><b>Salón: </b> <?= $key->classroom?></p>
+                                <p><b>Fecha: </b><?= date('Y-m-d',strtotime("next ".$day)); ?> <?= date('h:i A',strtotime($key->init_time) )?></p>
                             </div>
                         </div>
-                </div>
-                <div class="col s12 m4">
-                        <div class="card">
-                            <div class="card-image">
-                            <img class="to-center img-card" src="<?= RUTA_URL?>/img/class.jpg">
-                            <span class="card-title">Clase Hip - Hop</span>
-                            </div>
-                            <div class="card-content">
-                                <p>Nivel Intermedio - Juvenil</p>
-                                <p>Salón 210</p>
-                                <p>12/09/2018 03:30 PM</p>
-                            </div>
-                        </div>
-                </div>
-                <div class="col s12 m4">
-                        <div class="card">
-                            <div class="card-image">
-                            <img class="to-center img-card" src="<?= RUTA_URL?>/img/class.jpg">
-                            <span class="card-title">Clase Hip - Hop</span>
-                            </div>
-                            <div class="card-content">
-                                <p>Nivel Intermedio - Juvenil</p>
-                                <p>Salón 210</p>
-                                <p>12/09/2018 03:30 PM</p>
-                            </div>
-                        </div>
-                </div>
+                    </div>
+                <?php
+                }?>
             </div>  
       </div>
-
     </div>
     
 <?php require RUTA_APP.'/views/inc/footer-supervisor.inc'; ?>

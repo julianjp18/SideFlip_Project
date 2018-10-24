@@ -1,8 +1,13 @@
-<?php require RUTA_APP.'/views/inc/header-supervisor.inc'; ?>
-    <?php require RUTA_APP.'/views/inc/menu-supervisor.inc'; ?>
+<?php 
+if(!isset($_SESSION['id']) || !isset($_SESSION['supervisor']) || $_SESSION['supervisor'] != 1){
+    session_destroy();
+    redireccionar('/Pages/ingresar');
+}
+require RUTA_APP.'\views\inc\header-supervisor.inc';
+require RUTA_APP.'\views\inc\menu-supervisor.inc'; ?>
     <div class="container">
         <div class="row">
-            <div class="col s8"><h2>Tu Perfil, {{ nom_teacher}}</h2></div>
+            <div class="col s8"><h2>Tu Perfil, <b><?= $_SESSION['name'] ?></b></h2></div>
             <div class="col s4">
                 <br>
                 <br>
@@ -13,63 +18,57 @@
         </div>
         <div class="row">
             <div class="col s12">
-                <table class="table">
+                <table class="table responsive-table">
                     <tbody>
                         <tr>
                             <td>
                                 <strong>Nombre</strong>
                             </td>
                             <td>
-                                    {{nombre_asesor apellido_asesor}}
+                                    <?= $data->name_person ." ".$data->last_name_person ?>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <strong>Edad</strong>
                             </td>
-                            <td>{{edad_asesor}}</td>
+                            <td><?= $data->age ?></td>
                         </tr>
                         <tr>
                             <td>
                                 <strong>Correo electrónico</strong>
                             </td>
-                            <td>{{correo_asesor}}</td>
+                            <td><?= $data->email_person  ?></td>
                         </tr>
                         <tr>
                             <td>
-                                <strong>Tipo identificación</strong>
+                                <strong>Celular</strong>
                             </td>
-                            <td>{{t_identificacion_asesor}}</td>
+                            <td><?= $data->celphone_person  ?></td>
                         </tr>
                         <tr>
                             <td>
                                 <strong>Identificación</strong>
                             </td>
-                            <td>{{identificacion_asesor}}</td>
+                            <td><?= $data->identification_person  ?></td>
                         </tr>
                         <tr>
                             <td>
                                 <strong>Dirección</strong>
                             </td>
-                            <td>{{direccion_asesor}}</td>
+                            <td><?=$data->address_person  ?></td>
                         </tr>
                         <tr>
                             <td>
-                                <strong>Categorias inscritas</strong>
+                                <strong>Fecha de nacimiento</strong>
                             </td>
-                            <td>{{cat_inscritas_asesor}}</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>Ritmos inscritos</strong>
-                            </td>
-                            <td>{{rit_inscritos_asesor}}</td>
+                            <td><?=$data->birth_date_person  ?></td>
                         </tr>
                         <tr>
                             <td>
                                 <strong>Año de incorporación</strong>
                             </td>
-                            <td>{{año_ingreso_asesor}}</td>
+                            <td><?= date('Y',strtotime($data->admission_date_person))  ?></td>
                         </tr>
                     </tbody>
                 </table>

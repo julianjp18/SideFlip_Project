@@ -12,3 +12,7 @@ font-weight: bold;
 .page-footer .container .row .col .fa{
     font-size: 3em;
 }
+.card .card-image .card-title {
+    background-color: rgba(0,0,0,.8);
+    border-radius: 3%;
+}

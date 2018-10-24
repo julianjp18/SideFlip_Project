@@ -36,24 +36,24 @@
         }
 
         // se vincula la consulta al bind PDO
-        public function bind($parametro,$valor,$tipo = null){
-            if(is_null($tipo)){
+        public function bind($parameter,$value,$type = null){
+            if(is_null($type)){
                 switch (true){
-                    case is_int($valor):
-                        $tipo = PDO::PARAM_INT;
+                    case is_int($value):
+                        $type = PDO::PARAM_INT;
                     break;
-                    case is_bool($valor):
-                        $tipo = PDO::PARAM_BOOL;
+                    case is_bool($value):
+                        $type = PDO::PARAM_BOOL;
                     break;
-                    case is_null($valor):
-                        $tipo = PDO::PARAM_NULL;
+                    case is_null($value):
+                        $type = PDO::PARAM_NULL;
                     break;
                     default:
-                        $tipo = PDO::PARAM_STR;
+                        $type = PDO::PARAM_STR;
                     break;
                     }
             }
-            $this->stmt->bindvalue($parametro,$valor,$tipo);
+            $this->stmt->bindvalue($parameter,$value,$type);
         }
 
         // Ejecuta la consulta
@@ -62,19 +62,19 @@
         }
 
         // Obtiene los registros
-        public function registros(){
+        public function registers(){
             $this->execute();
             return $this->stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
-        // Obtiene un solo registro porId 
-        public function registroPorId(){
+        // Obtiene un solo registro by Id
+        public function registerById(){
             $this->execute();
             return $this->stmt->fetch(PDO::FETCH_NUM);
         }
 
         // Obtiene un solo registro
-        public function registro(){
+        public function register(){
             $this->execute();
             return $this->stmt->fetch(PDO::FETCH_OBJ);
         }

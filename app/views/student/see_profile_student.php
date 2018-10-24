@@ -2,7 +2,7 @@
     <?php require RUTA_APP.'/views/inc/menu_student.inc'; ?>
     <div class="container">
         <div class="row">
-            <div class="col s8"><h2>Tu Perfil, {{ nom_student}}</h2></div>
+            <div class="col s8"><h2>Tu Perfil, <b><?= $_SESSION['name'] ?></b></h2></div>
             <div class="col s4">
                 <br>
                 <br>
@@ -13,63 +13,57 @@
         </div>
         <div class="row">
             <div class="col s12">
-                <table class="table">
+                <table class="table responsive-table">
                     <tbody>
                         <tr>
                             <td>
                                 <strong>Nombre</strong>
                             </td>
                             <td>
-                                    {{nombre_estudiante apellido_estudiante}}
+                                    <?= $data->name_person ." ".$data->last_name_person ?>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <strong>Edad</strong>
                             </td>
-                            <td>{{edad_estudiante}}</td>
+                            <td><?= $data->age ?></td>
                         </tr>
                         <tr>
                             <td>
                                 <strong>Correo electrónico</strong>
                             </td>
-                            <td>{{correo_estudiante}}</td>
+                            <td><?= $data->email_person  ?></td>
                         </tr>
                         <tr>
                             <td>
-                                <strong>Tipo identificación</strong>
+                                <strong>Celular</strong>
                             </td>
-                            <td>{{t_identificacion_estudiante}}</td>
+                            <td><?= $data->celphone_person  ?></td>
                         </tr>
                         <tr>
                             <td>
                                 <strong>Identificación</strong>
                             </td>
-                            <td>{{identificacion_estudiante}}</td>
+                            <td><?= $data->identification_person  ?></td>
                         </tr>
                         <tr>
                             <td>
                                 <strong>Dirección</strong>
                             </td>
-                            <td>{{direccion_estudiante}}</td>
+                            <td><?=$data->address_person  ?></td>
                         </tr>
                         <tr>
                             <td>
-                                <strong>Categorias inscritas</strong>
+                                <strong>Fecha de nacimiento</strong>
                             </td>
-                            <td>{{cat_inscritas_estudiante}}</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>Ritmos inscritos</strong>
-                            </td>
-                            <td>{{rit_inscritos_estudiante}}</td>
+                            <td><?=$data->birth_date_person  ?></td>
                         </tr>
                         <tr>
                             <td>
                                 <strong>Año de incorporación</strong>
                             </td>
-                            <td>{{año_ingreso_estudiante}}</td>
+                            <td><?= date('Y',strtotime($data->admission_date_person))  ?></td>
                         </tr>
                     </tbody>
                 </table>
