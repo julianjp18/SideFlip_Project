@@ -7,6 +7,8 @@ class Teacher extends Controller{
         public function __construct(){
             $this->loginModel = $this->model('Login');
             $this->personModel = $this->model('Person');
+            $this->lessonModel = $this->model('Lesson');
+            $this->classStudentModel = $this->model('Class_Student');
             define('TEMPLATE','Docente');
         }
     
@@ -19,7 +21,8 @@ class Teacher extends Controller{
 
         public function start(){
             session_start();
-            $this->view('/teacher/main_student');
+            $result = $this->lessonModel->getClassesTeacher($_SESSION['id']);
+            $this->view('/teacher/main_teacher',$result);
         }
     
         public function see_profile(){
@@ -39,7 +42,12 @@ class Teacher extends Controller{
         }
 
         public function lessons(){
-            $this->view('/teacher/class_teacher');
+            session_start();
+            $datas = array('lessons' => [], 'emails' => [] );
+            $datas['lessons'] = $this->lessonModel->getClassesTeacher($_SESSION['id']);
+            $datas['emails'] = $this->personModel->getPersonEmailById($_SESSION['id']);
+            $datas['person'] = $this->personModel->getPersonById($_SESSION['id']);
+            $this->view('/teacher/class_teacher',$datas);
         }
 
         public function update_password(){

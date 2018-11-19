@@ -62,4 +62,13 @@ class Class_Student{
         }
     }
 
+    public function getEmailStudentsClassTeacher($id_teacher){
+        $this->db->query("SELECT person.email_person FROM person, teacher, class, class_student, student
+        WHERE 
+             teacher.id_person = :id_teacher AND class.id_teacher = teacher.id_teacher AND class_student.id_class = class.id_class
+             AND student.id_student = class_student.id_student AND person.id_person = student.id_person");
+        $this->db->bind(':id_teacher', $id_teacher);
+        $result = $this->db->registers();  
+        return $result;
+    }
 }

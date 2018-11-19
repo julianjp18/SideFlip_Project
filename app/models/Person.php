@@ -116,4 +116,13 @@
                 return false;
             }
         }
+
+        public function getPersonEmailById($id){
+            $this->db->query( "SELECT distinct person.email_person from person, teacher, class, class_student, student where student.id_student = class_student.id_student
+            AND class.id_class = class_student.id_class AND person.id_person = student.id_person
+            AND class.id_teacher = (select id_teacher from teacher where id_person = :id)");
+            $this->db->bind(':id', $id);
+            $result = $this->db->registers();
+            return $result;
+        }
     }

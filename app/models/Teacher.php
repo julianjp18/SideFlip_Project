@@ -13,8 +13,8 @@ class Teacher{
         $this->db->bind(':id', $id);
         $id = $this->db->registerById();
 
-        if($id != 0 && is_numeric($id)){
-            return $id;
+        if($id[0] != 0 && is_numeric($id[0])){
+            return $id[0];
         }else{
             return 0;
         }

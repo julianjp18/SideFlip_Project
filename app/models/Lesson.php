@@ -104,4 +104,40 @@ class Lesson{
         return $result;
     }
 
+    public function getClassesTeacher($id)
+    {
+        $this->db->query("SELECT class.name_class,class.classroom,category.name_category,schedule.init_time,schedule.end_date,schedule.day_week FROM class,schedule,category WHERE class.id_teacher=(select id_teacher from teacher where id_person=:id) AND category.id_category=class.id_category AND class.id_schedule=schedule.id_schedule AND init_date<=now() AND end_date>now()");
+        $this->db->bind(':id',$id);
+        $result= $this->db->registers();
+        return $result;
+    }
+
+    public function getClassesStudent($id)
+    {
+        $this->db->query("SELECT distinct class.name_class,class.classroom,category.name_category,schedule.init_time,schedule.end_date,schedule.day_week,person.name_person, person.last_name_person, person.email_person FROM class,schedule,category,class_student,person
+        WHERE class_student.id_student=(select id_student from student where id_person=:id) 
+        AND person.id_person = (select id_person from teacher where id_teacher=class.id_teacher) 
+        AND class.id_class=class_student.id_class AND category.id_category=class.id_category 
+        AND class.id_schedule=schedule.id_schedule AND init_date<=now() AND end_date>now()");
+        $this->db->bind(':id',$id);
+        $result= $this->db->registers();
+        return $result;
+    }
+
+    public function getLessonsAvailable()
+    {
+        $this->db->query("SELECT class.id_class, class.description_class, class.id_category, category.name_category FROM class, category WHERE class.id_category = category.id_category ");
+        $result= $this->db->registers();
+        return $result;
+    }
+
+    public function getScheduleByClassId($id_class)
+    {
+        $this->db->query("SELECT  schedule.day_week, schedule.init_time, schedule.end_time FROM schedule, class  WHERE class.id_class=:id_class");
+        $this->db->bind(':id_class',$id_class);
+        $result= $this->db->registers();
+        return $result;
+    }
+    
+    
 }

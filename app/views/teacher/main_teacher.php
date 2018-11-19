@@ -1,13 +1,18 @@
-<?php require RUTA_APP.'/views/inc/header.inc'; ?>
-    <?php require RUTA_APP.'/views/inc/menu_teacher.inc'; ?>
+<?php 
+ if(!isset($_SESSION['id']) || !isset($_SESSION['teacher']) || $_SESSION['teacher'] != 2){
+    session_destroy();
+    redireccionar('/Pages/ingresar');
+}
+ require RUTA_APP.'/views/inc/header.inc'; 
+ require RUTA_APP.'/views/inc/menu_teacher.inc'; ?>
     <div class="container">
-        <br>
+    <br>
         <br>
         <div class="row">
             <div class="col s6 center-align">
                 <img class="circle responsive-img profile-picture center-align" src="<?= RUTA_URL; ?>/img/profile.png" alt="Imagén de perfil"></td>
                 <br>
-                <a class="btn light-green" href="<?= RUTA_URL ?>/teacher/see_profile">Ver perfil</a>
+                <a class="btn light-green" href="<?= RUTA_URL ?>/student/see_profile">Ver perfil</a>
             </div>
             <div class="col s6">
                 <h3>Hola, <b><?= $_SESSION['name']?></b></h3>
@@ -17,12 +22,42 @@
                 <br>
             </div>
         </div>
-        <div class="row">
-            <div class="col 12">
-                <h3>Clases programadas</h3>
-                <hr>
-                <p>Por el momento no tienes clases programadas, <a href="<?= RUTA_URL ?>/teacher/lessons">solicita una</a></p>
-            </div>    
-        </div>
+            <h3><i>Proximas sesiones</i></h3>
+            <div class="divider"></div>
+            <div class="row">
+                <?php foreach ($data as $key ) {
+                    $day="";
+                    if($key->day_week=="Lunes"){
+                        $day="Monday";
+                    } else if($key->day_week=="Martes"){
+                        $day="Tuesday";
+                    } else if($key->day_week=="Miercoles"){
+                        $day="Wednesday";
+                    } else if($key->day_week=="Jueves"){
+                        $day="Thursday";
+                    } else if($key->day_week=="Viernes"){
+                        $day="Friday";
+                    } else{
+                        $day="Saturday";
+                    }
+                ?>
+                    <div class="col s12 m4">
+                        <div class="card horevable">
+                            <div class="card-image">
+                            <img class="to-center img-card" src="<?= RUTA_URL?>/img/classes/<?= rand (1,5)?>.jpg">
+                            <span class="card-title">Clase <?= $key->name_class?></span>
+                            </div>
+                            <div class="card-content">
+                                <p><b>Categoria: </b><?= $key->name_category?></p>
+                                <p><b>Salón: </b> <?= $key->classroom?></p>
+                                <p><b>Fecha: </b><?= date('Y-m-d',strtotime("next ".$day)); ?> <?= date('h:i A',strtotime($key->init_time) )?></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                }?>
+            </div>  
+      </div>
     </div>
-    <?php require RUTA_APP.'/views/inc/footer-supervisor.inc'; ?>
+    
+<?php require RUTA_APP.'/views/inc/footer-supervisor.inc'; ?>

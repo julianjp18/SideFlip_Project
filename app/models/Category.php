@@ -58,6 +58,13 @@
             }
         }
 
+        public function getCategoryByClassId($id_class){
+            $this->db->query("SELECT category.name_category FROM category, class WHERE category.id_category=class.id_category AND class.id_class = :id_class");
+            $this->db->bind(':id_class', $id_class);
+            $result = $this->db->register();
+            return $result;
+        }
+
 /** 
         public function editarPersona($id,$datos){
             

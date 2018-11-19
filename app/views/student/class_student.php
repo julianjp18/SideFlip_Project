@@ -1,5 +1,10 @@
-<?php require RUTA_APP.'/views/inc/header.inc'; ?>
-    <?php require RUTA_APP.'/views/inc/menu_student.inc'; ?>
+<?php 
+if(!isset($_SESSION['id']) || !isset($_SESSION['student']) || $_SESSION['student'] != 3){
+    session_destroy();
+    redireccionar('/Pages/ingresar');
+}
+require RUTA_APP.'/views/inc/header.inc'; 
+require RUTA_APP.'/views/inc/menu_student.inc'; ?>
     <br>
     <br>
     <div class="container">
@@ -22,11 +27,16 @@
                 <br>
                 <form action="<?= RUTA_URL ?>/student/request_class" method="POST">
                     <div class="input-field col s12">
-                        <select>
+                        <select name="cpk_student" id="cpk_student" required>
                             <option value="" disabled selected>Selecciona una opción</option>
-                            <option value="1">Bachata</option>
-                            <option value="2">Break Dance</option>
-                            <option value="3">Hip Hop</option>
+                            <?php 
+                                foreach ($data['lessons'] as $key) {
+                                    $key = (object) $key;
+                                ?>
+                                    <option value="<?= $key->id_rhythm?>"><?= $key->id_rhythm." Clase : ".$key->name_rhythm  ?></option>
+                                <?php
+                                }
+                                ?>
                         </select>
                         <label>Selecciona una clase</label>
                     </div>

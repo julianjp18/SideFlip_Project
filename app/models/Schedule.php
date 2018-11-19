@@ -69,4 +69,12 @@
                 return 0;
             }
         }
+
+        public function getDescriptionScheduleByRhythm($id_rhythm){
+            $this->db->query("SELECT distinct rhythm.id_rhythm, rhythm.name_rhythm, class.name_class, schedule.day_week, schedule.init_time, schedule.end_time, category.name_category
+            FROM class, rhythm, schedule, category WHERE class.id_rhythm =:id AND schedule.id_schedule = class.id_schedule AND category.id_category = class.id_category");
+            $this->db->bind(':id', $id_rhythm);
+            $result = $this->db->registers();
+            return $result;
+        }
     }

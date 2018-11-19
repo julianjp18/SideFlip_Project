@@ -1,14 +1,18 @@
-<?php require RUTA_APP.'/views/inc/header.inc'; ?>
-    <?php require RUTA_APP.'/views/inc/menu_teacher.inc'; ?>
+<?php 
+if(!isset($_SESSION['id']) || !isset($_SESSION['teacher']) || $_SESSION['teacher'] != 2){
+    session_destroy();
+    redireccionar('/Pages/ingresar');
+}
+require RUTA_APP.'/views/inc/header.inc'; 
+require RUTA_APP.'/views/inc/menu_teacher.inc'; ?>
     <br>
     <br>
-    <div class="container">
+    <div class="container" style="justify-content:center">
         <div class="row">
             <div class="col s12">
                 <ul class="tabs">
                     <li class="tab col s4"><a class="active" href="#test1">Ver Clases</a></li>
                     <li class="tab col s4"><a href="#test2">Historial clases</a></li>
-                    <li class="tab col s4"><a href="#test3">Solicitar clases</a></li>
                 </ul>
             </div>
             <div id="test1" class="col s12">
@@ -17,23 +21,7 @@
             <div id="test2" class="col s12">
                 <img class="img-responsive" style="max-width:100%" src="<?= RUTA_URL?>/img/calendar.png" alt="img-fullcalendar">
             </div>
-            <div id="test3" class="col s12">
-                <h3><i>Solicitar clase</i></h3>
-                <br>
-                <form action="<?= RUTA_URL ?>/teacher/request_class" method="POST">
-                    <div class="input-field col s12">
-                        <select>
-                            <option value="" disabled selected>Selecciona una opción</option>
-                            <option value="1">Bachata</option>
-                            <option value="2">Hip Hop</option>
-                            <option value="3">Salsa</option>
-                        </select>
-                        <label>Selecciona una clase</label>
-                    </div>
-                    <button type="submit" class="btn light-green">Cargar</button>
-                </form> 
-                <br><br>        
-            </div>
+            
         </div>        
     </div>
 <?php require RUTA_APP.'/views/inc/footer-supervisor.inc'; ?>
