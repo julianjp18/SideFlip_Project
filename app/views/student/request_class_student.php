@@ -1,18 +1,44 @@
-<?php require RUTA_APP.'/views/inc/header.inc'; ?>
-    <?php require RUTA_APP.'/views/inc/menu_student.inc'; ?>
+<?php
+if(!isset($_SESSION['id']) || !isset($_SESSION['student']) || $_SESSION['student'] != 3){
+    session_destroy();
+    redireccionar('/Pages/ingresar');
+}
+require RUTA_APP.'/views/inc/header.inc'; 
+require RUTA_APP.'/views/inc/menu_student.inc'; ?>
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h4>Solicitar clase {{nombre_clase}}</h4>
-                <p>{{ descripcion_clase}}</p>
+                <h4>Solicitar clase </h4>
+                <p></p>
                 <br>
+                <?php
+                    
+                            $message="";
+                            if(isset($_POST['btn_enviar'])){
+                                $to = "ssideflip@gmail.com"; // this is your Email address
+                                $from = "ssideflip@gmail.com"; // this is the sender's Email address
+                                $first_name = $data['persons']->name_person;
+                                $last_name = $data['persons']->last_name_person;
+                                $subject = "Solicitud clase: " . $first_name. " ".$last_name;
+                                $message = $_POST['msj-email'];                  
+                                mail($to,$subject,$message,$from);
+                                }
+                            ?>
                 <form action="" method="POST">
                     <div class="input-field col s12">
-                        <select>
+                        <select name="msj-email" id="msj-email" required>
                             <option value="" disabled selected>Selecciona una opción</option>
-                            <option value="1">Martes 2 de Octubre - 11 AM a 1 PM</option>
-                            <option value="2">Martes 2 Octubre - 2 AM a 4 PM</option>
-                            <option value="3">Miércoles 3 de Octubre - 11 AM a 1 PM</option>
+                            <?php 
+                                foreach ($data['schedules'] as $key) {
+                                    $key = (object) $key;
+                                ?>
+                                    <option value="<?= "Ritmo: ".$key->name_rhythm.". Clase: ". $key->name_class.". Horario: ".$key->day_week. " de ". $key->init_time. " a ". $key->end_time ." - Categoria: ". $key->name_category ?>">
+                                         <?= "Ritmo: ".$key->name_rhythm.". Clase: ". $key->name_class.". Horario: ".$key->day_week. " de ". $key->init_time. " a ". $key->end_time ." - Categoria: ". $key->name_category?>
+                                    </option>
+                                <?php
+                                }
+                            ?>
+                            
                         </select>
                         <label>Selecciona los siguientes horarios programados para la clase</label>
                     </div>

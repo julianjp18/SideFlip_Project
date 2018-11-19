@@ -57,4 +57,11 @@
                 return false;
             }
         }
+
+        public function getRhythmsName(){
+            $this->db->query("SELECT distinct rhythm.id_rhythm, rhythm.name_rhythm from class, rhythm,category where rhythm.id_rhythm = class.id_rhythm and class.id_category = category.id_category");
+            $result = $this->db->registers();  
+            return $result;
+            
+        }
     }
